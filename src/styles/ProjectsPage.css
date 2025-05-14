@@ -1,0 +1,81 @@
+.projects-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.projects-title {
+  font-size: 2rem;
+  color: var(--highlight-color, #f6c177);
+  margin-bottom: 0.5rem;
+}
+
+.projects-description {
+  color: var(--subtle-text, #908caa);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-item {
+  border: 1px solid var(--border-color, #6e6a86);
+  background-color: var(--surface-color, #1f1d2e);
+  padding: 1.5rem;
+  border-radius: 4px;
+}
+
+.project-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: var(--primary-color, #ebbcba);
+}
+
+.project-description {
+  color: var(--text-color, #e0def4);
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
+
+.project-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.tech-tag {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.6rem;
+  background-color: var(--overlay-color, #26233a);
+  color: var(--text-color, #e0def4);
+  border-radius: 2px;
+  font-family: monospace;
+}
+
+.project-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: var(--secondary-color, #9ccfd8);
+  text-decoration: none;
+  font-family: monospace;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .project-tech-list {
+    gap: 0.4rem;
+  }
+  
+  .tech-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
+} 
