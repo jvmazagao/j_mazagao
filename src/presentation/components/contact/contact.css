@@ -1,0 +1,8 @@
+.contact-links a {
+    color: var(--secondary-color, #9ccfd8);
+    text-decoration: none;
+  }
+  
+  .contact-links a:hover {
+    text-decoration: underline;
+  }

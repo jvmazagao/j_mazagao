@@ -19,7 +19,7 @@
 }
 
 .home-container {
-  max-width: 800px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 0 20px;
   color: var(--text-color);
@@ -30,7 +30,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
   border-bottom: 1px solid var(--border-color);
 }
 

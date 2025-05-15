@@ -111,15 +111,6 @@
   color: var(--primary-color, #ebbcba);
 }
 
-.contact-links a {
-  color: var(--secondary-color, #9ccfd8);
-  text-decoration: none;
-}
-
-.contact-links a:hover {
-  text-decoration: underline;
-}
-
 @media (max-width: 480px) {
   .tech-groups {
     grid-template-columns: 1fr;

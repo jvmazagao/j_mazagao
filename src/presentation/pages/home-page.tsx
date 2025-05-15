@@ -1,7 +1,7 @@
 import '../../styles/HomePage.css';
 import { useProjects } from '../hooks/use-projects';
 import { ProjectComponent } from '../components/projects/Project';
-
+import { Contact } from '../components/contact/contact';
 const HomePage = () => {
   const { projects, loading, error } = useProjects('jvmazagao');
   return (
@@ -11,7 +11,6 @@ const HomePage = () => {
         <nav className="navigation">
           <a href="#about">whoami</a>
           <a href="#projects">projects</a>
-          <a href="#blog">blog</a>
           <a href="#contact">contact</a>
         </nav>
       </header>

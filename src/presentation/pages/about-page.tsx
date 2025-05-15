@@ -1,7 +1,47 @@
 import React from 'react';
-import '../../styles/AboutPage.css';
-
+import '@/styles/AboutPage.css';
+import { Contact } from '@/presentation/components/contact/contact';
 const AboutPage: React.FC = () => {
+  const skills = [
+    {
+      name: 'Distributed Systems Architecture',
+    },
+    {
+      name: 'API Design and Development',
+    },
+    {
+      name: 'Database Performance Optimization',
+    },
+    {
+      name: 'Microservices',
+    },
+    {
+      name: 'Migration from monolith to microservices',
+    },
+  ]
+
+  const languages = [
+    { name: 'Python' },
+    { name: 'TypeScript/JavaScript' },
+    { name: 'Java' },
+    { name: 'Rust' },
+    { name: 'Go' },
+  ]
+
+  const databases = [
+    { name: 'PostgreSQL' },
+    { name: 'MySQL' },
+    { name: 'MongoDB' },
+    { name: 'Redis' },
+  ]
+
+  const tools = [
+    { name: 'Docker' },
+    { name: 'CI/CD' },
+    { name: 'Git' },
+  ]
+  
+  
   return (
     <div className="about-container">
       <h1 className="about-title">~/about</h1>
@@ -21,11 +61,9 @@ const AboutPage: React.FC = () => {
             
             <h3>## Skills</h3>
             <ul>
-              <li>- Distributed Systems Architecture</li>
-              <li>- API Design and Development</li>
-              <li>- Database Performance Optimization</li>
-              <li>- Microservices</li>
-              <li>- DevOps and Infrastructure as Code</li>
+              {skills.map((skill) => (
+                <li key={skill.name}>- {skill.name}</li>
+              ))}
             </ul>
             
             <h3>## Technologies</h3>
@@ -33,30 +71,27 @@ const AboutPage: React.FC = () => {
               <div className="tech-group">
                 <h4>### Languages</h4>
                 <ul>
-                  <li>- Go</li>
-                  <li>- Python</li>
-                  <li>- TypeScript/JavaScript</li>
-                  <li>- Rust (learning)</li>
+                  {languages.map((language) => (
+                    <li key={language.name}>- {language.name}</li>
+                  ))}
                 </ul>
               </div>
               
               <div className="tech-group">
                 <h4>### Databases</h4>
                 <ul>
-                  <li>- PostgreSQL</li>
-                  <li>- MongoDB</li>
-                  <li>- Redis</li>
-                  <li>- Elasticsearch</li>
+                  {databases.map((database) => (
+                    <li key={database.name}>- {database.name}</li>
+                  ))}
                 </ul>
               </div>
               
               <div className="tech-group">
                 <h4>### Tools</h4>
                 <ul>
-                  <li>- Docker</li>
-                  <li>- Kubernetes</li>
-                  <li>- CI/CD</li>
-                  <li>- Terraform</li>
+                  {tools.map((tool) => (
+                    <li key={tool.name}>- {tool.name}</li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -87,16 +122,7 @@ const AboutPage: React.FC = () => {
                 <li>- Contributed to migration from monolith to microservices</li>
               </ul>
             </div>
-            
-            <h3>## Contact</h3>
-            <p>
-              Feel free to reach out to me through any of the platforms below:
-            </p>
-            <ul className="contact-links">
-              <li>- Email: <a href="mailto:example@example.com">example@example.com</a></li>
-              <li>- GitHub: <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com/username</a></li>
-              <li>- LinkedIn: <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">linkedin.com/in/username</a></li>
-            </ul>
+            <Contact />
           </div>
         </div>
       </div>

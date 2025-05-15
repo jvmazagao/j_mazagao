@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import mdx from '@mdx-js/rollup';
 
 export default defineConfig({
-  base: '/my-blog/',
+  base: '/j_mazagao/',
   plugins: [
     react(),
     mdx(),
