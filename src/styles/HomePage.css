@@ -130,54 +130,17 @@
   gap: 1.5rem;
 }
 
-.project-card {
-  border: 1px solid var(--border-color);
-  padding: 1rem;
-  background: var(--card-bg);
-}
-
-.project-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  font-family: monospace;
-  color: var(--primary-color);
-}
-
-.project-card p {
-  color: var(--light-text);
-  font-family: monospace;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
-
-.project-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.project-tech {
-  font-size: 0.8rem;
+.loading, .error {
   color: var(--text-color);
-  background-color: var(--overlay);
-  padding: 0.2rem 0.5rem;
-  border-radius: 2px;
   font-family: monospace;
+  text-align: center;
+  padding: 2rem;
 }
 
-.project-link {
-  display: inline-block;
-  color: var(--secondary);
-  font-family: monospace;
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
+.error {
+  color: var(--error-color, #eb6f92);
 }
 
-/* Remove fancy effects and animations */
-.project-image {
-  display: none;
-}
 
 @media (max-width: 480px) {
   .header {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Layout.css';
+import '../../styles/Layout.css';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="layout">
       <header className="layout-header">
-        <div className="layout-logo">~/blog</div>
+        <div className="layout-logo">~/j_mazagao</div>
         <nav className="layout-navigation">
           <Link to="/">home</Link>
           <Link to="/blog">blog</Link>

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/ProjectsPage.css';
+import '../../styles/ProjectsPage.css';
 
 const ProjectsPage: React.FC = () => {
   const projects = [
