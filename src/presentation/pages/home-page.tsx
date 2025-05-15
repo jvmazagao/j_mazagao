@@ -1,6 +1,6 @@
 import '../../styles/HomePage.css';
 import { useProjects } from '../hooks/use-projects';
-// import { ProjectComponent } from '../components/projects/Project';
+import { ProjectComponent } from '../components/projects/Project';
 
 const HomePage = () => {
   const { projects, loading, error } = useProjects('jvmazagao');
@@ -34,7 +34,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* <section className="featured-projects" id="projects">
+      <section className="featured-projects" id="projects">
         <h2 className="section-title"># Recent Projects</h2>
         {loading ? (
           <p className="loading">Loading projects...</p>
@@ -47,7 +47,7 @@ const HomePage = () => {
             ))}
           </div>
         )}
-      </section> */}
+      </section>
     </div>
   );
 };
