@@ -1,6 +1,6 @@
 import '../../styles/HomePage.css';
 import { useProjects } from '../hooks/use-projects';
-import { ProjectComponent } from '../components/projects/Project';
+// import { ProjectComponent } from '../components/projects/Project';
 
 const HomePage = () => {
   const { projects, loading, error } = useProjects('jvmazagao');
