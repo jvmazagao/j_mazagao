@@ -1,0 +1,22 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# .cursorrules
+allow:
+  - files: ["*.tsx", "*.ts", "*.mdx", "*.md"]
+  - commands: ["touch", "mkdir", "npm", "vite"]
+  - tests: true
+deny:
+  - external HTTP requests
+prompt: |
+  Initialize and configure Vite + React (TypeScript) blog:
+    1. Ensure React plugin is in `vite.config.ts`.
+    2. Add MDX support via `@mdx-js/rollup` in Vite plugins.
+    3. Use path alias `@` → `src`.
+    4. Enforce project structure:
+       - `src/components/`
+       - `src/content/posts/`
+    5. Frontmatter schema: title, date, tags, description.
+    6. To create a post: `touch src/content/posts/YYYY-MM-DD-slug.mdx`, then use inline `///` prompts.
