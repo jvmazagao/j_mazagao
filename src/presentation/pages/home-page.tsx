@@ -15,7 +15,7 @@ const HomePage = () => {
         </nav>
       </header>
 
-      <section className="hero-section" id="about">
+      {/* <section className="hero-section" id="about">
         <div className="hero-content">
           <div className="terminal">
             <div className="terminal-header">
@@ -32,7 +32,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <section className="featured-projects" id="projects">
         <h2 className="section-title"># Recent Projects</h2>
