@@ -3,7 +3,7 @@ import './Project.css';
 
 export const ProjectComponent = ({ project }: { project: Project }) => {
   return (
-    <div className="project-card">
+    <div className="project-card retro-neon retro-crt">
       <h1>{project.name}</h1>
       <p>{project.description}</p>
       <div>

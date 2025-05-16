@@ -4,6 +4,8 @@ import { ProjectComponent } from '../components/projects/Project';
 
 const HomePage = () => {
   const { projects, loading, error } = useProjects('jvmazagao');
+  const user = 'j_mazagao@server';
+
   return (
     <div className="home-container">
       <header className="header">
@@ -22,13 +24,32 @@ const HomePage = () => {
               <span>terminal - bash - 80x24</span>
             </div>
             <div className="terminal-body">
-              <p className="prompt"><span className="prompt-user">user@server</span>:<span className="prompt-path">~</span>$ whoami</p>
+              <p className="prompt">
+                <span className="prompt-user">{user}</span>:
+                <span className="prompt-path">~</span>$ whoami
+              </p>
               <p className="response">João Victor Mazagão</p>
-              <p className="prompt"><span className="prompt-user">user@server</span>:<span className="prompt-path">~</span>$ cat about.txt</p>
-              <p className="response">Backend Engineer with a focus on system design and scalable architectures.</p>
-              <p className="prompt"><span className="prompt-user">user@server</span>:<span className="prompt-path">~</span>$ ls projects/</p>
-              <p className="response">{loading ? 'Loading...' : error ? 'Error loading projects' : projects.map(p => p.name).join(' ')}</p>
-              <p className="prompt"><span className="prompt-user">user@server</span>:<span className="prompt-path">~</span>$ _</p>
+
+              <p className="prompt">
+                <span className="prompt-user">{user}</span>:
+                <span className="prompt-path">~</span>$ cat&nbsp;about.txt
+              </p>
+              <p className="response">
+                Backend Engineer with a focus on system design and scalable architectures.
+              </p>
+
+              <p className="prompt">
+                <span className="prompt-user">{user}</span>:
+                <span className="prompt-path">~</span>$ ls&nbsp;projects/
+              </p>
+              <p className="response">
+                {loading ? 'Loading…' : error ? 'Error loading projects' : projects.map(p => p.name).join(' ')}
+              </p>
+
+              <p className="prompt">
+                <span className="prompt-user">{user}</span>:
+                <span className="prompt-path">~</span>$&nbsp;<span className="cursor">_</span>
+              </p>
             </div>
           </div>
         </div>
@@ -47,6 +68,30 @@ const HomePage = () => {
             ))}
           </div>
         )}
+      </section>
+
+      <section className="contact-section" id="contact">
+        <h2 className="section-title"># Contact Me</h2>
+        <div className="contact-content">
+          <div className="terminal">
+            <div className="terminal-header">
+              <span>contact - bash - 80x24</span>
+            </div>
+            <div className="terminal-body">
+              <p className="prompt">
+                <span className="prompt-user">{user}</span>:
+                <span className="prompt-path">~</span>$ mail_to
+              </p>
+              <p className="response">
+                <a href="mailto:jvmazagao@gmail.com" className="mail-link">jvmazagao@gmail.com</a>
+              </p>
+              <p className="prompt">
+                <span className="prompt-user">{user}</span>:
+                <span className="prompt-path">~</span>$&nbsp;<span className="cursor">_</span>
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );

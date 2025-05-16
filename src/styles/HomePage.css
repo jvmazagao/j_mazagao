@@ -140,6 +140,26 @@
   color: var(--error-color, #eb6f92);
 }
 
+/* Contact Section */
+.contact-section {
+  padding: 2rem 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.contact-content {
+  max-width: 100%;
+}
+
+.mail-link {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.mail-link:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
 
 @media (max-width: 480px) {
   .header {
@@ -157,3 +177,20 @@
     width: 100%;
   }
 } 
+
+/* core blink animation */
+@keyframes blink {
+  0%, 50%   { opacity: 1; }   /* underscore visible */
+  50.01%,100% { opacity: 0; } /* underscore hidden */
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.6ch;               /* keeps layout from shifting */
+  animation: blink 1s steps(2, start) infinite;
+}
+
+/* accessibility: respect OS "Reduce Motion" */
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; }
+}

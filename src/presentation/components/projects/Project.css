@@ -54,3 +54,70 @@
     font-size: 0.9rem;
     margin-top: 0.5rem;
 }
+
+/* ---------- 8-bit “power-up” pulse (NES vibe) ---------- */
+.retro-pulse:hover {
+    transform: scale(1.12);
+  }
+  
+  /* ---------- CRT scan-line sweep (arcade cabinet) ---------- */
+  .retro-crt {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .retro-crt::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent 0 2px,
+      rgba(255, 255, 255, 0.05) 2px 4px
+    );
+    transform: translateY(-100%);
+    transition: transform 650ms cubic-bezier(0.2, 0.75, 0.4, 1);
+  }
+  
+  .retro-crt:hover::after {
+    transform: translateY(100%);
+  }
+  
+  /* ---------- Neon flicker-on (’80s storefront) ---------- */
+  @keyframes neonFlicker {
+    0%,
+    100% {
+      opacity: 1;
+      filter: drop-shadow(0 0 4px #ff00ff);
+    }
+    18% {
+      opacity: 0.8;
+    }
+    36% {
+      opacity: 0.6;
+      filter: drop-shadow(0 0 2px #ff00ff);
+    }
+    54% {
+      opacity: 1;
+    }
+    72% {
+      opacity: 0.85;
+    }
+  }
+  
+  .retro-neon:hover {
+    animation: neonFlicker 320ms linear forwards;
+  }
+  
+  /* Respect users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .project-card {
+      transition: none;
+    }
+    .retro-crt::after,
+    .retro-pulse:hover,
+    .retro-neon:hover {
+      animation: none;
+      transform: none;
+    }
+  }
