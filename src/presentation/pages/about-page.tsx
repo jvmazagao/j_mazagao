@@ -6,47 +6,7 @@ import { Experience } from '../components/experience/experience';
 
 const AboutPage: React.FC = () => {
   const about = getAbout();
-  
-  const skills = [
-    {
-      name: 'Distributed Systems Architecture',
-    },
-    {
-      name: 'API Design and Development',
-    },
-    {
-      name: 'Database Performance Optimization',
-    },
-    {
-      name: 'Microservices',
-    },
-    {
-      name: 'Migration from monolith to microservices',
-    },
-  ]
-
-  const languages = [
-    { name: 'Python' },
-    { name: 'TypeScript/JavaScript' },
-    { name: 'Java' },
-    { name: 'Rust' },
-    { name: 'Go' },
-  ]
-
-  const databases = [
-    { name: 'PostgreSQL' },
-    { name: 'MySQL' },
-    { name: 'MongoDB' },
-    { name: 'Redis' },
-  ]
-
-  const tools = [
-    { name: 'Docker' },
-    { name: 'CI/CD' },
-    { name: 'Git' },
-  ]
-  
-  
+    
   return (
     <div className="about-container">
       <h1 className="about-title">~/about</h1>
