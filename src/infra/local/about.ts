@@ -115,13 +115,10 @@ export const getAbout = () => {
                     scope: 'Development of a platform for the management of a farm',
                 },
                 {
-                    company: 'Enaco',
+                    company: 'Enacom',
                     position: 'Software Engineer',
                     interval: 'Jan/2021 - Sep/2021',
                     scope: 'Development of a platform for the management of a farm',
-                    accomplishments: [
-                        "Developed a platform for the management of a farm",
-                    ],
                 }
             ]
         },
