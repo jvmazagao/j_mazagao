@@ -8,14 +8,13 @@ import Layout from './presentation/components/Layout'
 
 function App() {
   return (
-    <Router basename="/j_mazagao">
+    <Router basename='/j_mazagao'>
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>
     </Router>
