@@ -1,0 +1,60 @@
+.experience {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color, #6e6a86);
+  }
+  
+  .experience:last-child {
+    border-bottom: none;
+  }
+  
+  .experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .company {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--secondary-color, #9ccfd8);
+  }
+  
+  .duration {
+    color: var(--subtle-text, #908caa);
+    font-size: 0.9rem;
+  }
+  
+  .position {
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: var(--primary-color, #ebbcba);
+  }
+  
+  .experience ul {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+  
+  .experience li {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color, #ebbcba);
+  }
+  
+  .technologies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .tech-tag {
+    background-color: var(--surface-color, #26233a);
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--border-color, #6e6a86);
+    font-size: 0.85rem;
+    color: var(--text-color, #e0def4);
+    font-family: 'Courier New', monospace;
+  }

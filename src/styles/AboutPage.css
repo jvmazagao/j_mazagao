@@ -80,37 +80,6 @@
   margin-bottom: 1rem;
 }
 
-.experience {
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-color, #6e6a86);
-}
-
-.experience:last-child {
-  border-bottom: none;
-}
-
-.experience-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
-.company {
-  font-weight: bold;
-  color: var(--secondary-color, #9ccfd8);
-}
-
-.duration {
-  color: var(--subtle-text, #908caa);
-}
-
-.position {
-  font-style: italic;
-  margin-bottom: 0.5rem;
-  color: var(--primary-color, #ebbcba);
-}
-
 @media (max-width: 480px) {
   .tech-groups {
     grid-template-columns: 1fr;

@@ -1,7 +1,12 @@
 import React from 'react';
 import '@/styles/AboutPage.css';
 import { Contact } from '@/presentation/components/contact/contact';
+import { getAbout } from '@/infra/local/about';
+import { Experience } from '../components/experience/experience';
+
 const AboutPage: React.FC = () => {
+  const about = getAbout();
+  
   const skills = [
     {
       name: 'Distributed Systems Architecture',
@@ -52,76 +57,52 @@ const AboutPage: React.FC = () => {
         </div>
         <div className="terminal-body">
           <div className="terminal-content">
-            <h2># About Me</h2>
+            <h2>{about.title}</h2>
             <p>
-              I'm a Backend Engineer with expertise in designing and building robust, 
-              scalable systems. My focus is on creating efficient, maintainable 
-              solutions for complex problems.
+              {about.description}
             </p>
             
             <h3>## Skills</h3>
             <ul>
-              {skills.map((skill) => (
-                <li key={skill.name}>- {skill.name}</li>
+              {about.skills.map((skill) => (
+                <li key={skill}>- {skill}</li>
               ))}
             </ul>
             
             <h3>## Technologies</h3>
             <div className="tech-groups">
               <div className="tech-group">
-                <h4>### Languages</h4>
+                <h4>{about.technologies.languages.name}</h4>
                 <ul>
-                  {languages.map((language) => (
-                    <li key={language.name}>- {language.name}</li>
+                  {about.technologies.languages.items.map((language) => (
+                    <li key={language}>- {language}</li>
                   ))}
                 </ul>
               </div>
               
               <div className="tech-group">
-                <h4>### Databases</h4>
+                <h4>{about.technologies.databases.name}</h4>
                 <ul>
-                  {databases.map((database) => (
-                    <li key={database.name}>- {database.name}</li>
+                  {about.technologies.databases.items.map((database) => (
+                    <li key={database}>- {database}</li>
                   ))}
                 </ul>
               </div>
               
               <div className="tech-group">
-                <h4>### Tools</h4>
+                <h4>{about.technologies.tools.name}</h4>
                 <ul>
-                  {tools.map((tool) => (
-                    <li key={tool.name}>- {tool.name}</li>
+                  {about.technologies.tools.items.map((tool) => (
+                    <li key={tool}>- {tool}</li>
                   ))}
                 </ul>
               </div>
             </div>
             
-            <h3>## Work Experience</h3>
-            <div className="experience">
-              <div className="experience-header">
-                <span className="company">Example Company</span>
-                <span className="duration">2021 - Present</span>
-              </div>
-              <p className="position">Senior Backend Engineer</p>
-              <ul>
-                <li>- Designed and implemented high-throughput API services</li>
-                <li>- Led database optimization efforts resulting in 60% performance improvement</li>
-                <li>- Architected distributed data processing pipeline</li>
-              </ul>
-            </div>
-            
-            <div className="experience">
-              <div className="experience-header">
-                <span className="company">Previous Company</span>
-                <span className="duration">2018 - 2021</span>
-              </div>
-              <p className="position">Backend Developer</p>
-              <ul>
-                <li>- Developed microservices for e-commerce platform</li>
-                <li>- Implemented authentication and authorization systems</li>
-                <li>- Contributed to migration from monolith to microservices</li>
-              </ul>
-            </div>
+            <h3>{about.experience.title}</h3>
+            {about.experience.items.map((experience) => (
+              <Experience key={experience.company} {...experience} />
+            ))}
             <Contact />
           </div>
         </div>
