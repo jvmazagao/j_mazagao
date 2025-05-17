@@ -1,5 +1,5 @@
 import './App.css'
-import { HashRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import HomePage from './presentation/pages/home-page'
 import BlogPage from './presentation/pages/blog-page'
 import ProjectsPage from './presentation/pages/projects-page'
@@ -8,7 +8,7 @@ import Layout from './presentation/components/Layout'
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.PUBLIC_URL}>
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
