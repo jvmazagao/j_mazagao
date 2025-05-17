@@ -1,5 +1,5 @@
 import './App.css'
-import { HashRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import HomePage from './presentation/pages/home-page'
 import BlogPage from './presentation/pages/blog-page'
 import ProjectsPage from './presentation/pages/projects-page'
@@ -8,13 +8,14 @@ import Layout from './presentation/components/Layout'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/j_mazagao">
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>
     </Router>
