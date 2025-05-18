@@ -12,7 +12,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "/j_mazagao/",
+  "homepage": "https://j-mazagao.github.io/j_mazagao/#",
   "dependencies": {
     "@mdx-js/rollup": "^3.1.0",
     "gh-pages": "^6.3.0",
