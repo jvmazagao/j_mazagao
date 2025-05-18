@@ -8,7 +8,7 @@ import Layout from './presentation/components/Layout'
 
 function App() {
   return (
-    <Router basename='/j_mazagao'>
+    <Router basename={import.meta.env.BASE_URL}>
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
