@@ -1,0 +1,22 @@
+.terminal-cursor {
+  display: inline-block;
+  color: var(--primary-color, #ebbcba);
+}
+
+.terminal-cursor .cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: var(--primary-color, #ebbcba);
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+} 

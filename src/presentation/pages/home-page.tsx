@@ -1,6 +1,7 @@
 import '../../styles/HomePage.css';
 import { useProjects } from '../hooks/use-projects';
 import { ProjectComponent } from '../components/projects/Project';
+import { Cursor } from '@/presentation/components/terminal/cursor';
 
 const HomePage = () => {
   const { projects, loading, error } = useProjects('jvmazagao');
@@ -48,7 +49,8 @@ const HomePage = () => {
 
               <p className="prompt">
                 <span className="prompt-user">{user}</span>:
-                <span className="prompt-path">~</span>$&nbsp;<span className="cursor">_</span>
+                <span className="prompt-path">~</span>$&nbsp;
+                <Cursor />
               </p>
             </div>
           </div>
@@ -87,7 +89,8 @@ const HomePage = () => {
               </p>
               <p className="prompt">
                 <span className="prompt-user">{user}</span>:
-                <span className="prompt-path">~</span>$&nbsp;<span className="cursor">_</span>
+                <span className="prompt-path">~</span>$&nbsp;
+                <TerminalCursor />
               </p>
             </div>
           </div>
