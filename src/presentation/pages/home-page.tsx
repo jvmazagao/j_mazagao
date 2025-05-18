@@ -90,7 +90,7 @@ const HomePage = () => {
               <p className="prompt">
                 <span className="prompt-user">{user}</span>:
                 <span className="prompt-path">~</span>$&nbsp;
-                <TerminalCursor />
+                <Cursor />
               </p>
             </div>
           </div>
