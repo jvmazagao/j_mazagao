@@ -87,11 +87,6 @@ const HomePage = () => {
               <p className="response">
                 <a href="mailto:jvmazagao@gmail.com" className="mail-link">jvmazagao@gmail.com</a>
               </p>
-              <p className="prompt">
-                <span className="prompt-user">{user}</span>:
-                <span className="prompt-path">~</span>$&nbsp;
-                <Cursor />
-              </p>
             </div>
           </div>
         </div>

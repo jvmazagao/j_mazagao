@@ -99,25 +99,25 @@ export const getAbout = () => {
                 { 
                     company: 'Farme',
                     position: 'Software Engineer',
-                    interval: 'Jan/2021 - Sep/2021',
+                    interval: 'Feb/2021 - Sep/2021',
                     scope: 'Development of a platform for the management of a farm',
                 },
                 { 
                     company: 'Raro Labs',
                     position: 'Software Engineer',
-                    interval: 'Jan/2021 - Sep/2021',
+                    interval: 'Aug/2020 - Feb/2021',
                     scope: 'Development of a platform for the management of a farm',
                 },
                 {
                     company: 'Avenue Code',
                     position: 'Software Engineer',
-                    interval: 'Jan/2021 - Sep/2021',
+                    interval: 'Jul/2019 - Aug/2020',
                     scope: 'Development of a platform for the management of a farm',
                 },
                 {
                     company: 'Enacom',
                     position: 'Software Engineer',
-                    interval: 'Jan/2021 - Sep/2021',
+                    interval: 'Aug/2018 - Jul/2019',
                     scope: 'Development of a platform for the management of a farm',
                 }
             ]

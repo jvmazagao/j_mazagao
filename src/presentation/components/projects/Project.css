@@ -7,6 +7,7 @@
 
 .project-card:hover {
     border-color: var(--primary-color);
+    cursor: pointer;
 }
 
 .project-card h3 {

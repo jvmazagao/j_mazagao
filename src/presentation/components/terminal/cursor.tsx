@@ -62,7 +62,7 @@ export const Cursor = () => {
   return (
     <span className="terminal-cursor">
       {currentWord}
-      <span className="cursor">_</span>
+      <span className="cursor" />
     </span>
   );
 }; 
