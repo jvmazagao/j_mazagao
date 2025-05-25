@@ -15,10 +15,10 @@ export const ProjectComponent = ({ project }: { project: Project }) => {
         ))}
       </div>
       <div className="project-stats">
-        <span className="project-stat">⭐ {project.stargazers_count}</span>
-        <span className="project-stat">🕒 {new Date(project.updated_at).toLocaleDateString()}</span>
+        <span className="project-stat">⭐ {project.stars}</span>
+        <span className="project-stat">🕒 {new Date(project.updatedAt).toLocaleDateString()}</span>
       </div>
-      <a href={project.html_url} className="project-link" target="_blank" rel="noopener noreferrer">
+      <a href={project.link} className="project-link" target="_blank" rel="noopener noreferrer">
         View Source &gt;
       </a>
     </div>

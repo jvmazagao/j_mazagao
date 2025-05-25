@@ -4,7 +4,7 @@ export type Project = {
     description: string | null;
     language: string | null;
     topics: string[] | null;
-    stargazers_count: number;
-    updated_at: string;
-    html_url: string;
+    stars: number;
+    updatedAt: string;
+    link: string;
   }
