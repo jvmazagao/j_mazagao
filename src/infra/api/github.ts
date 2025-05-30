@@ -21,7 +21,6 @@ export async function fetchUserRepos(username: string): Promise<GitHubRepo[]> {
       {
         headers: {
           'Accept': 'application/vnd.github.v3+json',
-          // Add a user agent to avoid GitHub API limitations
           'User-Agent': `${GITHUB_USERNAME}-blog`
         }
       }
@@ -33,7 +32,6 @@ export async function fetchUserRepos(username: string): Promise<GitHubRepo[]> {
 
     const repos = await response.json();
     
-    // Filter out forked repositories and sort by last updated
     return repos
       .filter((repo: GitHubRepo) => !repo.fork)
       .sort((a: GitHubRepo, b: GitHubRepo) => 
