@@ -1,72 +1,98 @@
 import React from 'react';
+import { useContentful } from '../hooks/use-contentful';
 import '@/styles/AboutPage.css';
 import { Contact } from '@/presentation/components/contact/contact';
-import { getAbout } from '@/infra/local/about';
 import { Experience } from '../components/experience/experience';
 
 const AboutPage: React.FC = () => {
-  const about = getAbout();
-    
+  const { content, loading, error } = useContentful();
+
+  console.log(content?.about)
+  if (loading) {
+    return (
+      <div className="about-container">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="about-container">
+        <h1>Error</h1>
+        <p>{error}</p>
+      </div>
+    );
+  }
+
+  if (!content) {
+    return null;
+  }
+
   return (
     <div className="about-container">
       <h1 className="about-title">~/about</h1>
       
       <div className="terminal-section">
         <div className="terminal-header">
-          <span>about.md - vim - 80x24</span>
+          <div className="terminal-buttons">
+            <span className="terminal-button"></span>
+            <span className="terminal-button"></span>
+            <span className="terminal-button"></span>
+          </div>
+          <div className="terminal-title">about.sh</div>
         </div>
         <div className="terminal-body">
           <div className="terminal-content">
-            <h2>{about.title}</h2>
-            <p>
-              {about.description}
-            </p>
+            <h2>{content.about.title}</h2>
+            <p>{content.about.description}</p>
             
             <h3>## Skills</h3>
             <ul>
-              {about.skills.map((skill) => (
+              {content.about.skills.map((skill) => (
                 <li key={skill}>- {skill}</li>
               ))}
             </ul>
-            
+
             <h3>## Technologies</h3>
             <div className="tech-groups">
               <div className="tech-group">
-                <h4>{about.technologies.languages.name}</h4>
+                <h4>{content.about.technologies.languages.name}</h4>
                 <ul>
-                  {about.technologies.languages.items.map((language) => (
+                  {content.about.technologies.languages.items.map((language) => (
                     <li key={language}>- {language}</li>
                   ))}
                 </ul>
               </div>
               
               <div className="tech-group">
-                <h4>{about.technologies.databases.name}</h4>
+                <h4>{content.about.technologies.databases.name}</h4>
                 <ul>
-                  {about.technologies.databases.items.map((database) => (
+                  {content.about.technologies.databases.items.map((database) => (
                     <li key={database}>- {database}</li>
                   ))}
                 </ul>
               </div>
               
               <div className="tech-group">
-                <h4>{about.technologies.tools.name}</h4>
+                <h4>{content.about.technologies.tools.name}</h4>
                 <ul>
-                  {about.technologies.tools.items.map((tool) => (
+                  {content.about.technologies.tools.items.map((tool) => (
                     <li key={tool}>- {tool}</li>
                   ))}
                 </ul>
               </div>
             </div>
             
-            <h3>{about.experience.title}</h3>
-            {about.experience.items.map((experience) => (
+            <h3>{content.about.experience.title}</h3>
+            {content.about.experience.items.map((experience) => (
               <Experience key={experience.company} {...experience} />
             ))}
-            <Contact />
           </div>
         </div>
       </div>
+
+      <Contact />
     </div>
   );
 };
