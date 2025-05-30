@@ -11,6 +11,7 @@ export interface GitHubRepo {
   fork: boolean;
 }
 
+const GITHUB_USERNAME = 'jmazagao';
 const GITHUB_API_URL = 'https://api.github.com';
 
 export async function fetchUserRepos(username: string): Promise<GitHubRepo[]> {
@@ -21,7 +22,7 @@ export async function fetchUserRepos(username: string): Promise<GitHubRepo[]> {
         headers: {
           'Accept': 'application/vnd.github.v3+json',
           // Add a user agent to avoid GitHub API limitations
-          'User-Agent': 'jmazagao-blog'
+          'User-Agent': `${GITHUB_USERNAME}-blog`
         }
       }
     );
