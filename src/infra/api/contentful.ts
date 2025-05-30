@@ -38,8 +38,7 @@ const client = createClient({
 });
 
 export const getAboutPageContent = async (): Promise<About> => {
-    console.log(import.meta.env.VITE_CONTENTFUL_SPACE_ID)
-    console.log(import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN)
+
     try {
         const entries = await client.getEntries({
             content_type: 'aboutPage',

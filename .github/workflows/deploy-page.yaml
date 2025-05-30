@@ -19,7 +19,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: 
-      name: production
+      name: production-contentful
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
@@ -33,7 +33,7 @@ jobs:
           cache: yarn
 
       - name: Install dependencies
-        run: yarn install --force
+        run: yarn install --frozen-lockfile
 
       - name: Build
         run: yarn build
@@ -43,10 +43,12 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
