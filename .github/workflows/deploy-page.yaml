@@ -19,7 +19,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: 
-      name: production-contentful
+      name: production_contentful
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
