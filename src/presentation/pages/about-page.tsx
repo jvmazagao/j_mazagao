@@ -7,7 +7,6 @@ import { Experience } from '../components/experience/experience';
 const AboutPage: React.FC = () => {
   const { content, loading, error } = useContentful();
 
-  console.log(content?.about)
   if (loading) {
     return (
       <div className="about-container">
