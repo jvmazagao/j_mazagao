@@ -52,3 +52,22 @@ export default tseslint.config({
   },
 })
 ```
+
+## Environment Variables
+
+To build and run this project, you need to set up the following environment variables:
+
+1. Create a `.env` file in the root directory
+2. Add the following variables:
+   ```
+   VITE_CONTENTFUL_SPACE_ID=your_space_id
+   VITE_CONTENTFUL_ACCESS_TOKEN=your_access_token
+   ```
+
+You can get these values from your Contentful account:
+1. Go to your Contentful space
+2. Navigate to Settings > API keys
+3. Create a new API key or use an existing one
+4. Copy the Space ID and Content Delivery API access token
+
+Note: Make sure to add `.env` to your `.gitignore` file to keep your credentials secure.
