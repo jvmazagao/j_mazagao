@@ -38,26 +38,10 @@
   font-weight: 700;
   color: var(--primary-color);
   font-family: monospace;
+  height: 100%;
 }
 
-.navigation {
-  display: flex;
-  gap: 1.5rem;
-}
 
-.navigation a {
-  color: var(--text-color);
-  text-decoration: none;
-  font-weight: 500;
-  font-family: monospace;
-}
-
-.navigation a:hover {
-  color: var(--primary-color);
-  text-decoration: underline;
-}
-
-/* Terminal Section */
 .hero-section {
   padding: 2rem 0;
   border-bottom: 1px solid var(--border-color);

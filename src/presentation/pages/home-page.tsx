@@ -2,6 +2,7 @@ import '../../styles/HomePage.css';
 import { useProjects } from '../hooks/use-projects';
 import { ProjectComponent } from '../components/projects/Project';
 import { Cursor } from '@/presentation/components/terminal/cursor';
+import Navigation from '../components/navigation/Navigation';
 
 const HomePage = () => {
   const { projects, loading, error } = useProjects('jvmazagao');
@@ -11,11 +12,7 @@ const HomePage = () => {
     <div className="home-container">
       <header className="header">
         <div className="logo"></div>
-        <nav className="navigation">
-          <a href="#about">whoami</a>
-          <a href="#projects">projects</a>
-          <a href="#contact">contact</a>
-        </nav>
+        <Navigation />
       </header>
 
       <section className="hero-section" id="about">
