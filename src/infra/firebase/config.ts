@@ -26,7 +26,6 @@ const initializeAnalytics = async () => {
       return null;
     }
 
-    // Check if measurementId exists
     if (!firebaseConfig.measurementId) {
       console.error('measurementId is missing from Firebase config');
       return null;
