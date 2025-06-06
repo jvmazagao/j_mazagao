@@ -1,5 +1,5 @@
 import '@/presentation/components/navigation/Navigation.css';
-import { useAnalytics } from '@/contexts/analytics/analytics-context';
+import { useAnalytics } from '@/analytics/react/hooks/use-analytics';
 
 const Navigation = () => {
     const { trackEvent } = useAnalytics();
