@@ -14,12 +14,8 @@ const [analytics] = useState<FirebaseAnalyticsProvider>(new FirebaseAnalyticsPro
 
     const check = async () => {
       try {
-        if (analytics?.isReady()) {
-          setIsReady(analytics.isReady())
-        } else {
-          await analytics.initialize()
-          setTimeout(check, 100)
-        }
+        await analytics.initialize()
+        setIsReady(analytics?.isReady())
       } catch (error) {
         console.error('Analytics error:', error)
       }

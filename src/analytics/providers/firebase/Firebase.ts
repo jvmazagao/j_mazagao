@@ -1,20 +1,14 @@
-import {
-  isSupported,
-  getAnalytics,
-  type Analytics,
-  logEvent,
-} from "firebase/analytics";
+import { isSupported, getAnalytics, type Analytics, logEvent } from "firebase/analytics";
 import { initializeApp, type FirebaseApp } from "firebase/app";
 import { firebaseConfig } from "@/analytics/providers/firebase/config";
 import type { Provider } from "@/analytics/providers/Provider";
 import type { EventParameters } from "@/analytics/events";
-import type { FirebaseStartupError } from "@/analytics/providers/firebase/errors";
 
 export class FirebaseAnalyticsProvider implements Provider {
   private instance: Analytics | null;
   private app: FirebaseApp;
   private _isInitializing: boolean = false;
-  private _initializationPromise: Promise<void> | null = null;
+  private _initializationPromise: Promise<boolean> | null = null;
 
   constructor() {
     this.instance = null;
@@ -26,7 +20,7 @@ export class FirebaseAnalyticsProvider implements Provider {
     }
   }
 
-  isReady(): boolean {
+  isReady() {
     return this.instance !== null && !this._isInitializing;
   }
 
@@ -56,49 +50,28 @@ export class FirebaseAnalyticsProvider implements Provider {
     });
   }
 
-  async initialize(): Promise<void> {
-    this._isInitializing = true;
+  async initialize() {
+    if (this._initializationPromise) {
+      return this._initializationPromise;
+    }
 
+    this._isInitializing = true;
     this._initializationPromise = (async () => {
       try {
-        if (typeof window === 'undefined') {
-          console.warn("Firebase Analytics not available in server environment");
-          return;
-        }
-
         const supported = await isSupported();
-        console.log("Analytics supported:", supported);
 
         if (!supported) {
-          console.warn("Firebase Analytics is not supported in this environment");
-          return;
+          console.warn("Firebase Analytics not supported");
+          this._isInitializing = false;
+          return false;
         }
 
-        if (!firebaseConfig.measurementId) {
-          console.error("measurementId is missing from Firebase config");
-          return;
-        }
-
-        const analytics = getAnalytics(this.app);
-        this.instance = analytics;
+        this.instance = getAnalytics(this.app); // getAnalytics(app)
         console.log("Firebase Analytics initialized successfully");
-
-      } catch (error: unknown) {
-        if (error instanceof Error) {
-          const firebaseError: FirebaseStartupError = {
-            name: error.name,
-            message: error.message,
-            stack: error.stack,
-          };
-          console.error("Firebase Analytics initialization error:", firebaseError);
-        } else {
-          console.error("Unexpected error during Firebase Analytics initialization:", error);
-          console.error("Error details:", {
-            name: "UnknownError",
-            message: String(error),
-            stack: (error as { stack?: string }).stack || "No stack trace available",
-          });
-        }
+        return true;
+      } catch (error) {
+        console.error("Firebase Analytics initialization error:", error);
+        return false;
       } finally {
         this._isInitializing = false;
       }
