@@ -11,6 +11,12 @@ export class FirebaseAnalyticsProvider implements Provider {
   private _initializationPromise: Promise<boolean> | null = null;
 
   constructor() {
+     Object.getOwnPropertyNames(Object.getPrototypeOf(this))
+    .filter(name => name !== 'constructor' && typeof this[name as keyof this] === 'function')
+    .forEach(name => {
+      const key = name as keyof this;
+      this[key] = (this[key] as any).bind(this);
+    });
     this.instance = null;
     try {
       this.app = initializeApp(firebaseConfig);
@@ -26,6 +32,7 @@ export class FirebaseAnalyticsProvider implements Provider {
 
   trackEvent(eventName: string, parameters: EventParameters) {
     try {
+      console.log(this?.isReady())
       if (this?.isReady() && this.instance) {
         logEvent(this.instance, eventName, parameters);
       } else {

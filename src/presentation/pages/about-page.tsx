@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useContentful } from '../hooks/use-contentful';
 import '@/styles/AboutPage.css';
 import { Contact } from '@/presentation/components/contact/contact';
 import { Experience } from '@/presentation/components/experience/experience';
-// import { useAnalytics } from '@/analytics/react/hooks/use-analytics';
+import { useAnalytics } from '@/analytics/react/hooks/use-analytics';
 
 
 const AboutPage: React.FC = () => {
   const { content, loading, error } = useContentful();
-  // const { trackPageView, isReady } = useAnalytics();
+  const { trackPageView, isReady } = useAnalytics();
 
-  // useEffect(() => {
-  //   if(isReady) {
-  //     trackPageView('About Page', 'about-page');
-  //   }
-  // }, [trackPageView, isReady]);
+  useEffect(() => {
+    if(isReady) {
+      trackPageView('About Page', 'about-page');
+    }
+  }, [trackPageView, isReady]);
 
   if (loading) {
     return (
