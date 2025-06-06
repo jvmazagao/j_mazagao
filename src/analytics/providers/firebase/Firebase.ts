@@ -29,11 +29,10 @@ export class FirebaseAnalyticsProvider implements Provider {
   }
 
   trackEvent(eventName: string, parameters: EventParameters) {
-    if(!this.isReady() || !this.instance) {
-      return
-    }
     try {
-      logEvent(this.instance, eventName, parameters);
+      if(this.isReady() && this.instance) {
+        logEvent(this.instance, eventName, parameters);
+      }
     } catch (error) {
       console.error("Analytics error: ", error);
     }
