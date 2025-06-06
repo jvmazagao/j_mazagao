@@ -20,7 +20,7 @@ export const AnalyticsReactProvider = ({ children}: { children: React.ReactNode}
       }
     }
     check()
-  }, [analytics])
+  }, [])
 
   const value: AnalyticsContextType = {
     isReady,
