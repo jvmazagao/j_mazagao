@@ -8,13 +8,11 @@ import { useAnalytics } from '@/analytics/react/hooks/use-analytics';
 
 const AboutPage: React.FC = () => {
   const { content, loading, error } = useContentful();
-  const { trackPageView, isReady } = useAnalytics();
+  const { trackPageView} = useAnalytics();
 
   useEffect(() => {
-    if (isReady) {
       trackPageView('About Page', 'about-page');
-    }
-  }, [isReady, trackPageView]);
+  }, [trackPageView]);
 
   if (loading) {
     return (
