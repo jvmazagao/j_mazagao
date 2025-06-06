@@ -20,7 +20,7 @@ export class FirebaseAnalyticsProvider implements Provider {
   }
 
   isReady() {
-    if (this.instance && this.instance?.app) {
+    if (this.instance) {
       return true;
     }
 
