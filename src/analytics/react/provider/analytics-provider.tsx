@@ -9,11 +9,6 @@ export const AnalyticsReactProvider = ({ children }: { children: React.ReactNode
   const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
-    if (!analytics) {
-      console.error('Analytics provider is not available')
-      return
-    }
-
     const check = () => {
       try {
         if (analytics && analytics.isReady()) {
