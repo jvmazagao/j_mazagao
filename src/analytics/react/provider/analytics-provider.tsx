@@ -26,7 +26,7 @@ const [analytics] = useState<FirebaseAnalyticsProvider>(new FirebaseAnalyticsPro
     }
 
     check()
-  }, [analytics])
+  }, [analytics, isReady])
 
   const value: AnalyticsContextType = useMemo(() => ({
     isReady: isReady && !!analytics,

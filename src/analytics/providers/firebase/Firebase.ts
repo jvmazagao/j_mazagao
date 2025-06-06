@@ -13,25 +13,29 @@ import type { FirebaseStartupError } from "@/analytics/providers/firebase/errors
 export class FirebaseAnalyticsProvider implements Provider {
   private instance: Analytics | null;
   private app: FirebaseApp;
+  private _isInitializing: boolean = false;
+  private _initializationPromise: Promise<void> | null = null;
 
   constructor() {
     this.instance = null;
-    this.app = initializeApp(firebaseConfig)
+    try {
+      this.app = initializeApp(firebaseConfig);
+    } catch (error) {
+      console.error("Failed to initialize Firebase app:", error);
+      throw error;
+    }
   }
 
-  isReady() {
-    if (this.instance) {
-      console.log("aaaaaaaa")
-      return true;
-    }
-
-    return false;
+  isReady(): boolean {
+    return this.instance !== null && !this._isInitializing;
   }
 
   trackEvent(eventName: string, parameters: EventParameters) {
     try {
-      if(this.isReady() && this.instance) {
+      if (this.isReady() && this.instance) {
         logEvent(this.instance, eventName, parameters);
+      } else {
+        console.warn("Analytics not ready, skipping event:", eventName);
       }
     } catch (error) {
       console.error("Analytics error: ", error);
@@ -52,47 +56,60 @@ export class FirebaseAnalyticsProvider implements Provider {
     });
   }
 
-  async initialize() {
-    try {
-      const supported = await isSupported();
-      console.log("Analytics supported:", supported);
-
-      if (!supported) {
-        console.warn("Firebase Analytics is not supported in this environment");
-        return null;
-      }
-
-      if (!firebaseConfig.measurementId) {
-        console.error("measurementId is missing from Firebase config");
-        return null;
-      }
-
-      const analytics = getAnalytics(this.app);
-
-      this.instance = analytics
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        const firebaseError: FirebaseStartupError = {
-          name: error.name,
-          message: error.message,
-          stack: error.stack,
-        };
-        console.error(
-          "Firebase Analytics initialization error:",
-          firebaseError
-        );
-      } else {
-        console.error(
-          "Unexpected error during Firebase Analytics initialization:",
-          error
-        );
-        console.error("Error details:", {
-          name: "UnknownError",
-          message: String(error),
-          stack:
-            (error as { stack?: string }).stack || "No stack trace available",
-        });
-      }
+  async initialize(): Promise<void> {
+    // Prevent multiple initialization attempts
+    if (this._isInitializing || this.instance) {
+      return this._initializationPromise || Promise.resolve();
     }
+
+    this._isInitializing = true;
+
+    this._initializationPromise = (async () => {
+      try {
+        // Check if we're in a browser environment
+        if (typeof window === 'undefined') {
+          console.warn("Firebase Analytics not available in server environment");
+          return;
+        }
+
+        const supported = await isSupported();
+        console.log("Analytics supported:", supported);
+
+        if (!supported) {
+          console.warn("Firebase Analytics is not supported in this environment");
+          return;
+        }
+
+        if (!firebaseConfig.measurementId) {
+          console.error("measurementId is missing from Firebase config");
+          return;
+        }
+
+        const analytics = getAnalytics(this.app);
+        this.instance = analytics;
+        console.log("Firebase Analytics initialized successfully");
+
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          const firebaseError: FirebaseStartupError = {
+            name: error.name,
+            message: error.message,
+            stack: error.stack,
+          };
+          console.error("Firebase Analytics initialization error:", firebaseError);
+        } else {
+          console.error("Unexpected error during Firebase Analytics initialization:", error);
+          console.error("Error details:", {
+            name: "UnknownError",
+            message: String(error),
+            stack: (error as { stack?: string }).stack || "No stack trace available",
+          });
+        }
+      } finally {
+        this._isInitializing = false;
+      }
+    })();
+
+    return this._initializationPromise;
   }
 }
