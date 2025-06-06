@@ -15,7 +15,7 @@ const [analytics] = useState<FirebaseAnalyticsProvider>(new FirebaseAnalyticsPro
     const check = async () => {
       try {
         if (analytics?.isReady()) {
-          setIsReady(true)
+          setIsReady(analytics.isReady())
         } else {
           await analytics.initialize()
           setTimeout(check, 100)
@@ -29,11 +29,11 @@ const [analytics] = useState<FirebaseAnalyticsProvider>(new FirebaseAnalyticsPro
   }, [analytics, isReady])
 
   const value: AnalyticsContextType = useMemo(() => ({
-    isReady: isReady && !!analytics,
+    isReady: analytics?.isReady(),
     trackEvent: analytics?.trackEvent || (() => console.warn('Analytics not ready')),
     trackPageView: analytics?.trackPageView || (() => console.warn('Analytics not ready')),
     trackClick: analytics?.trackPageView || (() => console.warn('Analytics not ready')),
-  }), [isReady, analytics])
+  }), [analytics])
 
   return (
     <AnalyticsContext.Provider value={value}>
