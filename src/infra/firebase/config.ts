@@ -16,12 +16,6 @@ const app = initializeApp(firebaseConfig);
 
 let analytics: Analytics | null = null;
 
-interface FirebaseStartupError extends Error {
-  name: string;
-  message: string;
-  stack?: string;
-}
-
 const initializeAnalytics = async () => {
   try {
     const supported = await isSupported();
@@ -32,6 +26,7 @@ const initializeAnalytics = async () => {
       return null;
     }
 
+    // Check if measurementId exists
     if (!firebaseConfig.measurementId) {
       console.error('measurementId is missing from Firebase config');
       return null;
@@ -40,23 +35,13 @@ const initializeAnalytics = async () => {
     analytics = getAnalytics(app);
     
     return analytics;
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      const firebaseError: FirebaseStartupError = {
-        name: error.name,
-        message: error.message,
-        stack: error.stack
-      };
-      console.error('Firebase Analytics initialization error:', firebaseError);
-    } else {
-      console.error('Unexpected error during Firebase Analytics initialization:', error);
-      console.error('Error details:', {
-        name: 'UnknownError',
-        message: String(error),
-        stack: (error as { stack?: string }).stack || 'No stack trace available'
-      });
-    }
-    // Log the error details for debugging
+  } catch (error: any) {
+    console.error('Failed to initialize Firebase Analytics:', error);
+    console.error('Error details:', {
+      name: error.name,
+      message: error.message,
+      stack: error.stack
+    });
     return null;
   }
 };
