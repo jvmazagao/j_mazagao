@@ -15,7 +15,6 @@ export const AnalyticsReactProvider = ({ children }: { children: React.ReactNode
         setIsReady(prev => prev ? prev : true)
       } else {
         analytics.initialize()
-        setTimeout(check, 100)
       }
     }
 
