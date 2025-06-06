@@ -1,11 +1,10 @@
 import { FirebaseAnalyticsProvider } from "@/analytics/providers/firebase/Firebase"
-import type { Provider } from "@/analytics/providers/Provider"
 import { useState, useEffect, useMemo } from "react"
 import type { AnalyticsContextType } from "../types"
 import { AnalyticsContext } from "../context/analytics-context"
 
 export const AnalyticsReactProvider = ({ children }: { children: React.ReactNode }) => {
-  const [analytics, setAnalytics] = useState<Provider | null>(null)
+const [analytics] = useState<FirebaseAnalyticsProvider>(new FirebaseAnalyticsProvider())
   const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
@@ -18,9 +17,7 @@ export const AnalyticsReactProvider = ({ children }: { children: React.ReactNode
         if (analytics?.isReady()) {
           setIsReady(true)
         } else {
-          const provider = new FirebaseAnalyticsProvider()
-          await provider.initialize()
-          setAnalytics(provider)
+          await analytics.initialize()
           setTimeout(check, 100)
         }
       } catch (error) {
@@ -29,7 +26,7 @@ export const AnalyticsReactProvider = ({ children }: { children: React.ReactNode
     }
 
     check()
-  }, [])
+  }, [analytics])
 
   const value: AnalyticsContextType = useMemo(() => ({
     isReady: isReady && !!analytics,
