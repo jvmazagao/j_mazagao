@@ -3,7 +3,7 @@ import { useContentful } from '../hooks/use-contentful';
 import '@/styles/AboutPage.css';
 import { Contact } from '@/presentation/components/contact/contact';
 import { Experience } from '@/presentation/components/experience/experience';
-import { useAnalytics } from '@/analytics/react/hooks/use-analytics';
+import { useAnalytics } from '@/contexts/analytics/analytics-context';
 
 
 const AboutPage: React.FC = () => {
@@ -14,7 +14,7 @@ const AboutPage: React.FC = () => {
     if (isReady) {
       trackPageView('About Page', 'about-page');
     }
-  }, [isReady, trackPageView]);
+  }, [isReady]);
 
   if (loading) {
     return (
@@ -40,7 +40,7 @@ const AboutPage: React.FC = () => {
   return (
     <div className="about-container">
       <h1 className="about-title">~/about</h1>
-
+      
       <div className="terminal-section">
         <div className="terminal-header">
           <div className="terminal-buttons">
@@ -54,7 +54,7 @@ const AboutPage: React.FC = () => {
           <div className="terminal-content">
             <h2>{content.about.title}</h2>
             <p>{content.about.description}</p>
-
+            
             <h3>## Skills</h3>
             <ul>
               {content.about.skills.map((skill) => (
@@ -72,7 +72,7 @@ const AboutPage: React.FC = () => {
                   ))}
                 </ul>
               </div>
-
+              
               <div className="tech-group">
                 <h4>{content.about.technologies.databases.name}</h4>
                 <ul>
@@ -81,7 +81,7 @@ const AboutPage: React.FC = () => {
                   ))}
                 </ul>
               </div>
-
+              
               <div className="tech-group">
                 <h4>{content.about.technologies.tools.name}</h4>
                 <ul>
@@ -91,7 +91,7 @@ const AboutPage: React.FC = () => {
                 </ul>
               </div>
             </div>
-
+            
             <h3>{content.about.experience.title}</h3>
             {content.about.experience.items.map((experience) => (
               <Experience key={experience.company} {...experience} />
@@ -105,4 +105,4 @@ const AboutPage: React.FC = () => {
   );
 };
 
-export default AboutPage;
+export default AboutPage; 
