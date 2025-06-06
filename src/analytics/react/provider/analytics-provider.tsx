@@ -30,9 +30,9 @@ const [analytics] = useState<FirebaseAnalyticsProvider>(new FirebaseAnalyticsPro
 
   const value: AnalyticsContextType = useMemo(() => ({
     isReady: analytics?.isReady(),
-    trackEvent: analytics?.trackEvent || (() => console.warn('Analytics not ready')),
-    trackPageView: analytics?.trackPageView || (() => console.warn('Analytics not ready')),
-    trackClick: analytics?.trackPageView || (() => console.warn('Analytics not ready')),
+    trackEvent: analytics?.trackEvent,
+    trackPageView: analytics?.trackPageView,
+    trackClick: analytics?.trackPageView,
   }), [analytics])
 
   return (

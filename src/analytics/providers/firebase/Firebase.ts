@@ -57,16 +57,10 @@ export class FirebaseAnalyticsProvider implements Provider {
   }
 
   async initialize(): Promise<void> {
-    // Prevent multiple initialization attempts
-    if (this._isInitializing || this.instance) {
-      return this._initializationPromise || Promise.resolve();
-    }
-
     this._isInitializing = true;
 
     this._initializationPromise = (async () => {
       try {
-        // Check if we're in a browser environment
         if (typeof window === 'undefined') {
           console.warn("Firebase Analytics not available in server environment");
           return;

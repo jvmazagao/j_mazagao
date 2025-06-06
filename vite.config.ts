@@ -10,5 +10,11 @@ export default defineConfig({
   ],
   resolve: {
     alias: { '@': '/src' },
+  },
+  optimizeDeps: {
+    include: [
+      'firebase/app',
+      'firebase/analytics'
+    ]
   }
 });
