@@ -21,6 +21,7 @@ export class FirebaseAnalyticsProvider implements Provider {
 
   isReady() {
     if (this.instance) {
+      console.log("aaaaaaaa")
       return true;
     }
 

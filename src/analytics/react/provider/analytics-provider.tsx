@@ -9,9 +9,13 @@ export const AnalyticsReactProvider = ({ children }: { children: React.ReactNode
   const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
+    if(isReady) {
+      return
+    }
+
     const check = () => {
       try {
-        if (analytics && analytics.isReady()) {
+        if (analytics?.isReady()) {
           setIsReady(true)
         } else {
           const provider = new FirebaseAnalyticsProvider()

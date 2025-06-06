@@ -12,7 +12,7 @@ const AboutPage: React.FC = () => {
 
   useEffect(() => {
       trackPageView('About Page', 'about-page');
-  }, []);
+  }, [trackPageView]);
 
   if (loading) {
     return (
