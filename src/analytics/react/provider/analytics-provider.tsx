@@ -13,13 +13,13 @@ export const AnalyticsReactProvider = ({ children }: { children: React.ReactNode
       return
     }
 
-    const check = () => {
+    const check = async () => {
       try {
         if (analytics?.isReady()) {
           setIsReady(true)
         } else {
           const provider = new FirebaseAnalyticsProvider()
-          provider.initialize()
+          await provider.initialize()
           setAnalytics(provider)
           setTimeout(check, 100)
         }
@@ -29,7 +29,7 @@ export const AnalyticsReactProvider = ({ children }: { children: React.ReactNode
     }
 
     check()
-  }, [analytics])
+  }, [])
 
   const value: AnalyticsContextType = useMemo(() => ({
     isReady: isReady && !!analytics,
