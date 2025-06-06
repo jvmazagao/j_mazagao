@@ -32,7 +32,6 @@ export class FirebaseAnalyticsProvider implements Provider {
 
   trackEvent(eventName: string, parameters: EventParameters) {
     try {
-      console.log(this?.isReady())
       if (this?.isReady() && this.instance) {
         logEvent(this.instance, eventName, parameters);
       } else {
