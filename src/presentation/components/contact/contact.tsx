@@ -16,8 +16,6 @@ export const Contact = () => {
             </div>
             <div className="terminal-body">
                 <div className="terminal-content">
-                    <h3>## Contact</h3>
-                    <p>Feel free to reach out through any of these platforms:</p>
                     <ul className="contact-links">
                         <li>
                             <span className="contact-label">Email:</span>
