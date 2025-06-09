@@ -26,4 +26,4 @@ export const useContentful = () => {
   }, []);
 
   return { content, loading, error };
-}; 
+};
