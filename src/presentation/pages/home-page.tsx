@@ -1,76 +1,66 @@
-import '../../styles/HomePage.css';
-import { useProjects } from '../hooks/use-projects';
-import { ProjectComponent } from '../components/projects/Project';
-import { Cursor } from '@/presentation/components/terminal/cursor';
-import Navigation from '../components/navigation/Navigation';
-import { Contact } from '@/presentation/components/contact/contact';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useAnalytics } from '@/analytics/react/hooks/use-analytics';
 
-const HomePage = () => {
-  const { projects, loading, error } = useProjects('jvmazagao');
-  const user = 'j_mazagao@server';
+const HomePage: React.FC = () => {
+  const { trackPageView, isReady } = useAnalytics();
+
+  React.useEffect(() => {
+    if (isReady) {
+      trackPageView('Home Page', 'home-page');
+    }
+  }, [trackPageView, isReady]);
 
   return (
-    <div className="home-container">
-      <header className="header">
-        <div className="logo"></div>
-        <Navigation />
-      </header>
+    <div className="home">
+      <section className="hero mb-4">
+        <h1>Hello, I'm João Mazagão</h1>
+        <p className="text-subtle">
+          Software Engineer & Technical Writer
+        </p>
+      </section>
 
-      <section className="hero-section" id="about">
-        <div className="hero-content">
-          <div className="terminal">
-            <div className="terminal-header">
-              <span>terminal - bash - 80x24</span>
-            </div>
-            <div className="terminal-body">
-              <p className="prompt">
-                <span className="prompt-user">{user}</span>:
-                <span className="prompt-path">~</span>$ whoami
-              </p>
-              <p className="response">João Victor Mazagão</p>
+      <section className="recent-posts mb-4">
+        <h2>Latest Posts</h2>
+        <div className="posts-grid">
+          {/* Example blog post cards - replace with actual data */}
+          <article className="card">
+            <h3>Building a Minimalist Blog</h3>
+            <p className="text-subtle mb-2">March 15, 2024</p>
+            <p>
+              Exploring the art of minimalism in web design and how it can enhance
+              the reading experience...
+            </p>
+            <Link to="/blog/building-minimalist-blog" className="read-more">
+              Read more →
+            </Link>
+          </article>
 
-              <p className="prompt">
-                <span className="prompt-user">{user}</span>:
-                <span className="prompt-path">~</span>$ cat&nbsp;about.txt
-              </p>
-              <p className="response">
-                Backend Engineer with a focus on system design and scalable architectures.
-              </p>
-
-              <p className="prompt">
-                <span className="prompt-user">{user}</span>:
-                <span className="prompt-path">~</span>$ ls&nbsp;projects/
-              </p>
-              <p className="response">
-                {loading ? 'Loading…' : error ? 'Error loading projects' : projects.map(p => p.name).join(' ')}
-              </p>
-
-              <p className="prompt">
-                <span className="prompt-user">{user}</span>:
-                <span className="prompt-path">~</span>$&nbsp;
-                <Cursor />
-              </p>
-            </div>
-          </div>
+          <article className="card">
+            <h3>The Joy of Simple Code</h3>
+            <p className="text-subtle mb-2">March 10, 2024</p>
+            <p>
+              Why writing simple, maintainable code is one of the most important
+              skills for a developer...
+            </p>
+            <Link to="/blog/joy-of-simple-code" className="read-more">
+              Read more →
+            </Link>
+          </article>
         </div>
       </section>
 
-      <section className="featured-projects" id="projects">
-        <h2 className="section-title"># Recent Projects</h2>
-        {loading ? (
-          <p className="loading">Loading projects...</p>
-        ) : error ? (
-          <p className="error">{error}</p>
-        ) : (
-          <div className="projects-grid">
-            {projects.map(project => (
-              <ProjectComponent key={project.id} project={project} />
-            ))}
-          </div>
-        )}
+      <section className="about-preview card">
+        <h2>About Me</h2>
+        <p>
+          I'm a software engineer passionate about creating elegant solutions
+          and sharing knowledge through writing. I believe in the power of
+          simplicity and continuous learning.
+        </p>
+        <Link to="/about" className="read-more">
+          Learn more about me →
+        </Link>
       </section>
-
-      <Contact />
     </div>
   );
 };

@@ -178,3 +178,64 @@
 @media (prefers-reduced-motion: reduce) {
   .cursor { animation: none; }
 }
+
+.home {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.read-more:hover {
+  color: var(--highlight-color);
+}
+
+.about-preview {
+  margin-top: 4rem;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 2rem 0;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+} 
