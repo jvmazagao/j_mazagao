@@ -81,11 +81,36 @@
     font-weight: 500;
 }
 
+.contact-link {
+    color: var(--text-color, #e0def4);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: block;
+    cursor: pointer;
+    padding: 0.25rem 0;
+}
+
+.contact-link:hover {
+    color: var(--highlight-color, #f6c177);
+    text-decoration: underline;
+}
+
+.contact-icon-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-icon-wrapper svg {
+    stroke: currentColor;
+    vertical-align: middle;
+}
+
 @media (max-width: 768px) {
     .contact-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .contact-card {
         padding: 1rem;
     }
