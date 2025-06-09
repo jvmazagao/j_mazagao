@@ -4,7 +4,7 @@
   min-height: 100vh;
   max-width: 980px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1rem 1rem 1rem 1rem;
 }
 
 .layout-header {
@@ -38,6 +38,7 @@
 
 .layout-content {
   flex: 1;
+  padding: 1rem 0;
 }
 
 .layout-footer {
