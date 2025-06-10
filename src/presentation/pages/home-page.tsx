@@ -4,11 +4,20 @@ import { ProjectComponent } from '../components/projects/Project';
 import { Cursor } from '@/presentation/components/terminal/cursor';
 import Navigation from '../components/navigation/Navigation';
 import { Contact } from '@/presentation/components/contact/contact';
+import { useAnalytics } from '@/analytics/react/hooks/use-analytics';
+import { useEffect } from 'react';
+import { PageLocations } from '@/analytics/events';
 
 const HomePage = () => {
   const { projects, loading, error } = useProjects('jvmazagao');
   const user = 'j_mazagao@server';
+  const { trackPageView, isReady } = useAnalytics();
 
+  useEffect(() => {
+    if(isReady) {
+      trackPageView('Home Page', PageLocations.HOME);
+    }
+  }, [trackPageView, isReady]);
   return (
     <div className="home-container">
       <header className="header">
@@ -75,4 +84,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage; 
+export default HomePage;

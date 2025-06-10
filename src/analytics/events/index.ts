@@ -15,4 +15,13 @@ export type EventParameters = PageViewEventParameters | ButtonClickEventParamete
 export enum Events {
   PAGE_VIEW = "page_view",
   BUTTON_CLICK = "button_click",
+  NAVIGATION_CLICK = "navigation_click",
+  NAVIGATION = "navigation",
+}
+
+export enum PageLocations {
+  HOME = "home-page",
+  BLOG = "blog-page",
+  PROJECTS = "projects-page",
+  ABOUT = "about-page"
 }

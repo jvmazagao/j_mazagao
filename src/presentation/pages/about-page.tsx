@@ -4,6 +4,7 @@ import '@/styles/AboutPage.css';
 import { Contact } from '@/presentation/components/contact/contact';
 import { Experience } from '@/presentation/components/experience/experience';
 import { useAnalytics } from '@/analytics/react/hooks/use-analytics';
+import { PageLocations } from '@/analytics/events';
 
 
 const AboutPage: React.FC = () => {
@@ -12,7 +13,7 @@ const AboutPage: React.FC = () => {
 
   useEffect(() => {
     if(isReady) {
-      trackPageView('About Page', 'about-page');
+      trackPageView('About Page', PageLocations.ABOUT);
     }
   }, [trackPageView, isReady]);
 

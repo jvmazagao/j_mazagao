@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../styles/BlogPage.css';
 import { useBlogPost } from '@/presentation/hooks/use-blog-post';
 import { Blog } from '../components/blogs/blog';
+import { useAnalytics } from '@/analytics/react/hooks/use-analytics';
+import { PageLocations } from '@/analytics/events';
 
 
 const BlogPage: React.FC = () => {
   const { blogPosts, loading, error } = useBlogPost();
+  const { trackPageView, isReady } = useAnalytics();
+
+  useEffect(() => {
+    if(isReady) {
+      trackPageView('Blog Page', PageLocations.BLOG);
+    }
+  }, [trackPageView, isReady]);
 
   if (loading) {
     return (
@@ -29,7 +38,7 @@ const BlogPage: React.FC = () => {
     <div className="blog-container">
       <h1 className="blog-title">~/blog</h1>
       <p className="blog-description">Notes, thoughts, and technical articles</p>
-      
+
       <div className="posts-list">
         {blogPosts.map(post => (
           <Blog key={post.id} post={post} />
@@ -39,4 +48,4 @@ const BlogPage: React.FC = () => {
   );
 };
 
-export default BlogPage; 
+export default BlogPage;

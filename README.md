@@ -1,57 +1,61 @@
-# React + TypeScript + Vite
+# Personal Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive personal portfolio website built with React, TypeScript, and Vite. The website features a clean, terminal-inspired design and integrates with various services for content management and analytics.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🎨 Modern, terminal-inspired UI design
+- 📱 Fully responsive layout
+- 📊 Analytics integration with Firebase
+- 📝 Blog system with Contentful CMS integration
+- 🔗 Social media links with icon support
+- 🎯 Project showcase with GitHub integration
+- 📈 SEO optimized
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+src/
+├── analytics/           # Analytics integration
+│   ├── providers/      # Analytics providers (Firebase)
+│   └── react/         # React hooks and context for analytics
+├── domain/            # Domain entities and types
+├── infra/            # Infrastructure layer
+│   ├── api/          # External API integrations
+│   └── contentful/   # Contentful CMS integration
+├── presentation/     # UI components and pages
+│   ├── components/   # Reusable React components
+│   ├── hooks/        # Custom React hooks
+│   ├── pages/        # Page components
+│   └── utils/        # Utility functions
+├── styles/           # Global styles and CSS modules
+└── use-cases/        # Application business logic
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Implemented Modules
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Analytics
+- Firebase Analytics integration
+- Page view tracking
+- Event tracking for user interactions
+- Click tracking for navigation and social links
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### Content Management
+- Contentful CMS integration for blog posts
+- Dynamic content loading
+- Fallback content handling
+
+### UI Components
+- Terminal-style interface
+- Responsive navigation
+- Social media links with icons
+- Project showcase grid
+- Blog post list and detail views
+
+### Data Fetching
+- GitHub API integration for projects
+- Contentful API integration for blog posts
+- Contact information management
 
 ## Environment Variables
 
@@ -71,3 +75,31 @@ You can get these values from your Contentful account:
 4. Copy the Space ID and Content Delivery API access token
 
 Note: Make sure to add `.env` to your `.gitignore` file to keep your credentials secure.
+
+## Development
+
+This project uses:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) for Fast Refresh
+- TypeScript for type safety
+- ESLint for code quality
+- React Router for navigation
+- React Icons for icon support
+- Firebase for analytics
+- Contentful for content management
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up environment variables
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+5. Build for production:
+   ```bash
+   npm run build
+   ```
